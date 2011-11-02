@@ -1,0 +1,170 @@
+<?php
+
+namespace Opensegovia\GestorTiempoBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Opensegovia\GestorTiempoBundle\Entity\Reporte
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="Opensegovia\GestorTiempoBundle\Entity\ReporteRepository")
+ */
+class Reporte
+{
+    /**
+     * @var integer $id
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @var datetime $fechaReporte
+     *
+     * @ORM\Column(name="fechaReporte", type="datetime")
+     */
+    private $fechaReporte;
+
+    /**
+     * @var float $horasReportadas
+     *
+     * @ORM\Column(name="horasReportadas", type="float")
+     */
+    private $horasReportadas;
+
+    /**
+     * @var string $comentario
+     *
+     * @ORM\Column(name="comentario", type="string", length=255)
+     */
+    private $comentario;
+
+    /**
+     * @var datetime $created_at
+     *
+     * @ORM\Column(name="created_at", type="datetime")
+     */
+    private $created_at;
+
+	/**
+	 * @ORM\ManyToOne(targetEntity="Proyecto", inversedBy="reportes")
+	 */
+	 private $proyecto;
+	  
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+	
+	public function __toString(){
+		return $this->getNombre();
+	}
+
+    /**
+     * Set fechaReporte
+     *
+     * @param datetime $fechaReporte
+     */
+    public function setFechaReporte($fechaReporte)
+    {
+        $this->fechaReporte = $fechaReporte;
+    }
+
+    /**
+     * Get fechaReporte
+     *
+     * @return datetime 
+     */
+    public function getFechaReporte()
+    {
+        return $this->fechaReporte;
+    }
+
+    /**
+     * Set horasReportadas
+     *
+     * @param float $horasReportadas
+     */
+    public function setHorasReportadas($horasReportadas)
+    {
+        $this->horasReportadas = $horasReportadas;
+    }
+
+    /**
+     * Get horasReportadas
+     *
+     * @return float 
+     */
+    public function getHorasReportadas()
+    {
+        return $this->horasReportadas;
+    }
+
+    /**
+     * Set comentario
+     *
+     * @param string $comentario
+     */
+    public function setComentario($comentario)
+    {
+        $this->comentario = $comentario;
+    }
+
+    /**
+     * Get comentario
+     *
+     * @return string 
+     */
+    public function getComentario()
+    {
+        return $this->comentario;
+    }
+
+    /**
+     * Set created_at
+     *
+     * @param datetime $createdAt
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->created_at = $createdAt;
+    }
+
+    /**
+     * Get created_at
+     *
+     * @return datetime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->created_at;
+    }
+
+    /**
+     * Set proyecto
+     *
+     * @param Opensegovia\GestorTiempoBundle\Entity\Proyecto $proyecto
+     */
+    public function setProyecto(\Opensegovia\GestorTiempoBundle\Entity\Proyecto $proyecto)
+    {
+        $this->proyecto = $proyecto;
+    }
+
+    /**
+     * Get proyecto
+     *
+     * @return Opensegovia\GestorTiempoBundle\Entity\Proyecto 
+     */
+    public function getProyecto()
+    {
+        return $this->proyecto;
+    }
+}
